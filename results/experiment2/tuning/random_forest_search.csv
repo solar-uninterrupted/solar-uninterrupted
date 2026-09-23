@@ -1,0 +1,13 @@
+model,params,mean_test_score,std_test_score,rank_test_score,mean_fit_time,search
+Random forest,"OrderedDict({'m__max_depth': 9, 'm__max_features': 0.8094080202241276, 'm__min_samples_leaf': 94})",-0.5548741217837131,0.07621383262583606,5,12.059053778648376,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 14, 'm__max_features': 0.9183206941666036, 'm__min_samples_leaf': 34})",-0.6039735335686998,0.14655531037296315,11,17.549015045166016,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 9, 'm__max_features': 0.9431057651685639, 'm__min_samples_leaf': 15})",-0.5659906317840214,0.08105492804927938,7,14.017729640007019,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 14, 'm__max_features': 0.4203100929775925, 'm__min_samples_leaf': 62})",-0.5208454720856583,0.06744479965807748,2,7.642802715301514,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 14, 'm__max_features': 0.6066204305086463, 'm__min_samples_leaf': 55})",-0.550626480964413,0.0968753417419817,4,10.705111026763916,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 13, 'm__max_features': 0.9575588163219402, 'm__min_samples_leaf': 21})",-0.6114653354840085,0.1519601754295525,12,18.73433482646942,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 11, 'm__max_features': 0.8427550651795177, 'm__min_samples_leaf': 39})",-0.5845353928468695,0.11972133821944347,9,14.767196893692017,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 11, 'm__max_features': 0.9440064585061214, 'm__min_samples_leaf': 52})",-0.596994887334302,0.12483921489597571,10,15.540417313575745,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 15, 'm__max_features': 0.7904350112349561, 'm__min_samples_leaf': 88})",-0.5803313166542416,0.11420877417271177,8,13.97855544090271,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 4, 'm__max_features': 0.872481013764626, 'm__min_samples_leaf': 75})",-0.5408791942708906,0.02420975627085792,3,7.045516133308411,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 6, 'm__max_features': 0.3, 'm__min_samples_leaf': 5})",-0.5590322468716268,0.03348140187069204,6,3.7084999084472656,BayesSearchCV
+Random forest,"OrderedDict({'m__max_depth': 14, 'm__max_features': 0.3, 'm__min_samples_leaf': 85})",-0.5080059175606062,0.05026112476342476,1,5.532628655433655,BayesSearchCV

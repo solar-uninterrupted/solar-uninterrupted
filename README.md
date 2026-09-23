@@ -13,6 +13,8 @@ to find where — and how — the forecast systematically fails.
 data/raw/          CER source files (as downloaded; do not edit)
 data/processed/    cer_solar_panel_long.csv + .meta.json sidecar (built by src/build_panel.py)
 src/build_panel.py Reproducible reshape from wide to long; also exposes load_panel()
+src/fixed_origin_forecast.py  Experiment 2: fixed-origin annual forecast from end-2015, 4 tuned models, residual clustering
+results/experiment2/  Experiment 2 outputs: metrics, tuning tables, predictions, clusters, figures, run_metadata.json
 notebooks/         EDA and modeling notebooks
 docs/              Submitted deliverables (M1–M4) and the ABS data instructions
 ```
@@ -63,6 +65,11 @@ These are documented in the M2 planning summary and implemented or flagged as no
 | Privacy floor (cells < 10 modified) | Not applied. Add an indicator feature; do not treat small counts as exact | modelling code |
 | No residential / commercial split | Not applied. Capacity threshold following APVI, with sensitivity reported | modelling code |
 | Postcode `0000` | Present in the CER files as a placeholder; exclude from geographic joins | modelling code |
+
+## Experiments
+
+- **Experiment 1 — one-month-ahead backtest** (Shashwat, `code/run_m5_count_analysis.py` on branch `m5-modeling`): weights fitted 2008–2015, each 2016–2024 prediction uses actual counts through the prior month.
+- **Experiment 2 — fixed-origin forecast** (`src/fixed_origin_forecast.py`): every 2016–2024 prediction uses only information available at end-2015; error reported by horizon; residual clustering on relative residuals. Run: `python src/fixed_origin_forecast.py --stage all` (or `--stage tune --model NAME` then `--stage fit` on a slow machine).
 
 ## Modelling plan (from the M4 paper outline)
 

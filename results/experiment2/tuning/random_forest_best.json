@@ -1,0 +1,8 @@
+{
+  "best_params": {
+    "m__max_depth": 14,
+    "m__max_features": 0.3,
+    "m__min_samples_leaf": 85
+  },
+  "cv_log_mae": 0.5080059175606062
+}

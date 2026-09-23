@@ -1,0 +1,13 @@
+model,params,mean_test_score,std_test_score,rank_test_score,mean_fit_time,search
+XGBoost,"OrderedDict({'m__learning_rate': 0.060722504673458404, 'm__max_depth': 6, 'm__min_child_weight': 19, 'm__subsample': 0.6578997967435244})",-0.5166071675966217,0.0571537279424775,1,1.8084149360656738,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.19314128702588662, 'm__max_depth': 7, 'm__min_child_weight': 7, 'm__subsample': 0.9756119532966647})",-0.5624388136677485,0.09652996427362615,10,1.7498784065246582,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.06671041235089441, 'm__max_depth': 8, 'm__min_child_weight': 3, 'm__subsample': 0.7166664009351126})",-0.5496703830490997,0.0940033426942056,8,2.606394052505493,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.18050191609471503, 'm__max_depth': 3, 'm__min_child_weight': 12, 'm__subsample': 0.9013823905781553})",-0.5341050854356449,0.048676504205068444,6,1.0550312995910645,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.1743322797518746, 'm__max_depth': 5, 'm__min_child_weight': 11, 'm__subsample': 0.8578566310535165})",-0.5287461764443817,0.06706182959466284,5,1.3711262941360474,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.14598691512703893, 'm__max_depth': 8, 'm__min_child_weight': 4, 'm__subsample': 0.594212645882715})",-0.5626902609465019,0.10060983980689234,11,2.6572840213775635,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.10635836079947951, 'm__max_depth': 7, 'm__min_child_weight': 8, 'm__subsample': 0.9371626476672289})",-0.5504145829592196,0.0924833425672362,9,1.8332065343856812,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.08712074763808884, 'm__max_depth': 8, 'm__min_child_weight': 10, 'm__subsample': 0.9188282185302634})",-0.5644649070323143,0.10044356013824804,12,2.217227578163147,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.2659250830727488, 'm__max_depth': 6, 'm__min_child_weight': 18, 'm__subsample': 0.7079105437897268})",-0.5477068313028982,0.08419192686813581,7,1.678950309753418,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.020197590757135626, 'm__max_depth': 7, 'm__min_child_weight': 15, 'm__subsample': 0.6272771289320225})",-0.5266457235144262,0.04799123955314394,4,2.415850877761841,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.042626566393928686, 'm__max_depth': 5, 'm__min_child_weight': 1, 'm__subsample': 0.5})",-0.5205590166190841,0.040334972125164736,2,1.6876888275146484,BayesSearchCV
+XGBoost,"OrderedDict({'m__learning_rate': 0.04144679610796312, 'm__max_depth': 5, 'm__min_child_weight': 20, 'm__subsample': 1.0})",-0.5234793872455041,0.03593865298851484,3,1.2849199771881104,BayesSearchCV

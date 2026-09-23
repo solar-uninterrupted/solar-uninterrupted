@@ -22,10 +22,10 @@ the long column descriptors.
 |---|---|---|---|
 | G01 | `2021Census_G01_AUST_POA.csv` | `Tot_P_P` (total persons) | population density (with area) |
 | G02 | `2021Census_G02_AUST_POA.csv` | `Median_age_persons`, `Median_tot_hhd_inc_weekly`, `Average_household_size`, `Median_mortgage_repay_monthly`, `Median_rent_weekly` | income, age, household size features |
-| G36 | `2021Census_G36_AUST_POA.csv` | `Separate_house_Total`, `Semi_detached_..._Total`, `Flat_or_apartment_Total`, `Total_Total` (occupied private dwellings) | **dwelling denominator**; detached share; apartment share |
+| G36 | `2021Census_G36_AUST_POA.csv` | `OPDs_Separate_house_Dwellings`, `OPDs_SD_r_t_h_th_Tot_Dwgs` (semi-detached/terrace), `OPDs_Flt_apart_Tot_Dwgs` (flats/apartments), `OPDs_Tot_OPDs_Dwellings` (occupied private dwellings), `Total_PDs_Dwellings` (all private dwellings incl. unoccupied) | **dwelling denominator**; detached share; apartment share |
 | G37 | `2021Census_G37_AUST_POA.csv` | tenure totals: `O_OR_Total` (owned outright), `O_MTG_Total` (owned with mortgage), `R_Tot_Total` (rented) | owner-occupied share |
 
-Column names are the ABS "short" descriptors; confirm the exact names against
+Column names above were verified against the downloaded 2021 short-header pack on 2026-09-23 (G01, G02, G37 as listed; G36 uses the abbreviated labels shown). The general rule: confirm against
 `Metadata/2021Census_geog_desc_1st_2nd_3rd_release.xlsx` and the G-table metadata sheet,
 since ABS abbreviates differently table to table.
 
@@ -37,8 +37,9 @@ which lets us test whether the denominator moved between censuses.
 
 - ABS codes are `POA` + four digits, e.g. `POA0800`. Strip the prefix: `code.str[3:]`.
 - Keep it as a **string** so it matches the panel's 4-character postcode.
-- ABS Postal Areas approximate Australia Post postcodes (built from mesh blocks); a few
-  CER postcodes will have no POA and vice versa. Report the unmatched count in the paper.
+- ABS Postal Areas approximate Australia Post postcodes (built from mesh blocks). Verified 2026-09-23:
+  2,634 of 2,810 CER postcodes match a POA; the 176 unmatched are PO-box / delivery-centre
+  postcodes holding 2,179 installations (0.05% of the total). Report this in the paper.
 - Exclude CER postcode `0000` before joining.
 
 ```python

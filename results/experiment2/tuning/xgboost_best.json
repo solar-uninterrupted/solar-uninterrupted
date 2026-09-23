@@ -1,0 +1,9 @@
+{
+  "best_params": {
+    "m__learning_rate": 0.060722504673458404,
+    "m__max_depth": 6,
+    "m__min_child_weight": 19,
+    "m__subsample": 0.6578997967435244
+  },
+  "cv_log_mae": 0.5166071675966217
+}

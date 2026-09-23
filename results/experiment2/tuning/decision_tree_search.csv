@@ -1,0 +1,13 @@
+model,params,mean_test_score,std_test_score,rank_test_score,mean_fit_time,search
+Decision tree,"{'m__max_depth': 4, 'm__min_samples_leaf': 20}",-0.5505719645195142,0.025945883953430837,4,0.20979130268096924,GridSearchCV
+Decision tree,"{'m__max_depth': 4, 'm__min_samples_leaf': 50}",-0.5505719645195142,0.025945883953430837,4,0.20490336418151855,GridSearchCV
+Decision tree,"{'m__max_depth': 4, 'm__min_samples_leaf': 100}",-0.5505719645195142,0.025945883953430837,4,0.2081754207611084,GridSearchCV
+Decision tree,"{'m__max_depth': 6, 'm__min_samples_leaf': 20}",-0.5451491421079864,0.026466501713099222,2,0.27671921253204346,GridSearchCV
+Decision tree,"{'m__max_depth': 6, 'm__min_samples_leaf': 50}",-0.5451689039723614,0.02648626357747419,3,0.2725801467895508,GridSearchCV
+Decision tree,"{'m__max_depth': 6, 'm__min_samples_leaf': 100}",-0.5433438315216457,0.024661191126758797,1,0.26963281631469727,GridSearchCV
+Decision tree,"{'m__max_depth': 8, 'm__min_samples_leaf': 20}",-0.5605881475877188,0.0686668989404651,7,0.3204305171966553,GridSearchCV
+Decision tree,"{'m__max_depth': 8, 'm__min_samples_leaf': 50}",-0.5615817076624612,0.07298168679603709,8,0.32262158393859863,GridSearchCV
+Decision tree,"{'m__max_depth': 8, 'm__min_samples_leaf': 100}",-0.5638503473862082,0.07435919897328161,9,0.3194437026977539,GridSearchCV
+Decision tree,"{'m__max_depth': 12, 'm__min_samples_leaf': 20}",-0.6628406525542706,0.15919795795013603,11,0.41086697578430176,GridSearchCV
+Decision tree,"{'m__max_depth': 12, 'm__min_samples_leaf': 50}",-0.6910374767991735,0.18628520095403656,12,0.4282529354095459,GridSearchCV
+Decision tree,"{'m__max_depth': 12, 'm__min_samples_leaf': 100}",-0.6489173131846221,0.1706036240294213,10,0.3849910497665405,GridSearchCV
