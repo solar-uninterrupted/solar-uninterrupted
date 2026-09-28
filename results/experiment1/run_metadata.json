@@ -1,0 +1,44 @@
+{
+  "data": "CER monthly solar-installation counts; no ABS, no adoption denominator",
+  "count_only": true,
+  "train": "2008-01 to 2015-12",
+  "holdout": "2016-01 to 2024-12",
+  "rolling_one_month_ahead_uses_observed_post_2015_lags": true,
+  "geographic_map_completed": false,
+  "residential_filter_completed": false,
+  "privacy_floor_observed_cell_flags_available": false,
+  "bayessearchcv_run": false,
+  "bayessearchcv_reason": "scikit-optimize not installed; full Bayesian search not run",
+  "search_criterion": "raw-prediction MAE (not clipped); fixed 2 expanding full-year folds: 2014 and 2015",
+  "heldout_metric_predictions_clipped_to_nonnegative": true,
+  "optimal_params": {
+    "Ridge": {
+      "model__alpha": 200.0
+    },
+    "Random forest": {
+      "max_depth": 14,
+      "min_samples_leaf": 10,
+      "n_estimators": 25
+    }
+  },
+  "search_cv_mae": {
+    "Ridge": 2.319786846637726,
+    "Random forest": 2.0299443277594884
+  },
+  "rows_train": 269664,
+  "rows_holdout": 303480,
+  "postcodes": 2810,
+  "excluded_0000_installations": 4,
+  "cluster_features": "2016\u20132024 annual mean signed residuals of tuned random forest count model",
+  "cluster_k": 2,
+  "pca_variance_explained": [
+    0.4713669105238016,
+    0.149259641252467,
+    0.09707081412056391
+  ],
+  "elapsed_seconds": 40.7,
+  "sklearn": "1.8.0",
+  "pandas": "2.2.3",
+  "numpy": "2.3.5",
+  "seed": 42
+}
