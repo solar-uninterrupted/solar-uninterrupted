@@ -1,6 +1,7 @@
 # ABS Census data — what to download and how to join it
 
 Owner: Abraham (Data Lead). Needed before M7; not required for the M5 first draft.
+**Status: done 2026-09-27 — see `src/join_abs.py` and the README. The notes below record how the join was specified.**
 Estimated time: 15–20 minutes to download, ~1 hour to join and check.
 
 ## 1. Where
@@ -50,7 +51,8 @@ g36["postcode"] = g36["POA_CODE_2021"].str[3:]
 
 ## 4. Denominator decision (write this down in Section 4 of the paper)
 
-Adoption rate = cumulative installations ÷ occupied private dwellings (G36 `Total_Total`).
+Adoption rate = cumulative installations ÷ occupied private dwellings (G36 `OPDs_Tot_OPDs_Dwellings`;
+G36 has no `Total_Total` column — that name is G37's tenure total).
 State that the denominator is 2021 and therefore static against a 25-year numerator;
 if the TSP tables are pulled, use 2011 / 2016 / 2021 values by period as a sensitivity check.
 

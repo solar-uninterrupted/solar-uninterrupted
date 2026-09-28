@@ -1,0 +1,24 @@
+{
+  "file": "cer_abs_panel_long.csv.gz",
+  "description": "CER panel joined to ABS 2021 dwellings: adoption-rate target, matched postcodes only",
+  "source": "ABS 2021 Census General Community Profile DataPack, Postal Areas, Australia (short header); CER small-scale installation postcode data, current as at 31 July 2026",
+  "string_columns": [
+    "Small Unit Installation Postcode"
+  ],
+  "date_columns": [
+    "month"
+  ],
+  "shape": {
+    "rows": 800736,
+    "columns": 7
+  },
+  "built_by": "src/join_abs.py",
+  "load_with": "src/join_abs.py: load_joined() / load_features()",
+  "target": "adoption_rate = cum_installations / dwellings_opd_2021",
+  "known_issues": {
+    "static_denominator": "2021 occupied private dwellings used for every month 2001-2026",
+    "rate_above_1": "flagged in rate_gt_1_flag; commercial systems and replacements are not separable",
+    "registration_lag": "last ~12 months undercount (see cer_solar_panel_long.meta.json)",
+    "cumulative_start": "cumulative counts start Apr 2001 (CER coverage start)"
+  }
+}

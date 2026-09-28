@@ -11,8 +11,11 @@ to find where — and how — the forecast systematically fails.
 
 ```
 data/raw/          CER source files (as downloaded; do not edit)
+data/raw/abs/      ABS 2021 Census GCP Postal Area tables G01, G02, G36, G37 + POA area/state
 data/processed/    cer_solar_panel_long.csv + .meta.json sidecar (built by src/build_panel.py)
+                   abs_poa_features.csv, cer_abs_panel_long.csv.gz, abs_join_report.json (built by src/join_abs.py)
 src/build_panel.py Reproducible reshape from wide to long; also exposes load_panel()
+src/join_abs.py    CER–ABS join: adoption-rate target + Census features; exposes load_joined(), load_features()
 src/fixed_origin_forecast.py  Experiment 2: fixed-origin annual forecast from end-2015, 4 tuned models, residual clustering
 results/experiment2/  Experiment 2 outputs: metrics, tuning tables, predictions, clusters, figures, run_metadata.json
 notebooks/         EDA and modeling notebooks
@@ -50,6 +53,35 @@ To rebuild from the raw files:
 
 ```
 python src/build_panel.py --raw data/raw --out data/processed
+```
+
+### ABS 2021 Census join — `src/join_abs.py`
+Source: ABS 2021 Census General Community Profile DataPack, Postal Areas, Australia (short header).
+Only the four tables used are in `data/raw/abs/`; the full pack is in the group Drive folder.
+
+```
+python src/join_abs.py
+```
+
+Outputs in `data/processed/`:
+
+| File | Grain | Contents |
+|---|---|---|
+| `abs_poa_features.csv` | 2,643 Postal Areas | population, medians (age, household income, rent, mortgage), household size, dwelling-structure shares, tenure shares, population density, `state_abs`, `small_pop_flag`, `cross_border_flag` |
+| `cer_abs_panel_long.csv.gz` | 800,736 postcode-months | matched postcodes only: `installations`, `cum_installations`, `dwellings_opd_2021`, `adoption_rate`, `rate_gt_1_flag` |
+| `abs_join_report.json` | — | match counts and the unmatched postcode list |
+
+2,634 of 2,810 CER postcodes (excluding `0000`) match a Postal Area. The 176 unmatched are
+PO-box and delivery-centre postcodes holding 2,179 installations (0.05%).
+**Adoption rate** = cumulative installations since Apr 2001 ÷ 2021 occupied private dwellings
+(G36 `OPDs_Tot_OPDs_Dwellings`). The denominator is static; 174 postcodes exceed 1 by Jul 2026
+and are flagged, not dropped. Census features describe 2021, so using them to explain earlier
+adoption is retrospective explanation, not forecasting.
+
+```python
+from src.join_abs import load_joined
+df = load_joined("data/processed/cer_abs_panel_long.csv.gz",
+                 features="data/processed/abs_poa_features.csv")
 ```
 
 ## Data-handling decisions
