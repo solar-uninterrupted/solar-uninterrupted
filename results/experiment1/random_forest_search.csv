@@ -1,0 +1,5 @@
+model,params,mean_test_score,std_test_score,rank_test_score,split0_test_score,split1_test_score,mean_fit_time
+Random forest,"{'max_depth': 10, 'min_samples_leaf': 10, 'n_estimators': 25}",-2.046927767296697,0.2096321543460692,3,-2.2565599216427663,-1.837295612950628,3.0613843202590942
+Random forest,"{'max_depth': 10, 'min_samples_leaf': 20, 'n_estimators': 25}",-2.053656915213453,0.21254206515707308,4,-2.2661989803705263,-1.84111485005638,3.0799813270568848
+Random forest,"{'max_depth': 14, 'min_samples_leaf': 10, 'n_estimators': 25}",-2.0299443277594884,0.19871524652536976,1,-2.2286595742848583,-1.8312290812341188,3.7457770109176636
+Random forest,"{'max_depth': 14, 'min_samples_leaf': 20, 'n_estimators': 25}",-2.0301745292425193,0.2006726310395761,2,-2.2308471602820954,-1.8295018982029432,3.619903564453125
