@@ -9,8 +9,8 @@ Primary models: Ridge Regression and Random Forest Regression. Persistence basel
 Run from the repository root:
 
 ```bash
-python code/run_m5_count_analysis.py
-python code/verify_m5_outputs.py
+python src/run_m5_count_analysis.py
+python src/verify_m5_outputs.py
 ```
 
 The canonical input is `data/processed/cer_solar_panel_long.csv`, loaded through `src.build_panel.load_panel()` so postcode strings and the metadata sidecar are preserved.

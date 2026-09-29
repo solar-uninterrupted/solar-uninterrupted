@@ -100,7 +100,7 @@ These are documented in the M2 planning summary and implemented or flagged as no
 
 ## Experiments
 
-- **Experiment 1 — one-month-ahead backtest** (Shashwat, `code/run_m5_count_analysis.py` on branch `m5-modeling`): weights fitted 2008–2015, each 2016–2024 prediction uses actual counts through the prior month.
+- **Experiment 1 — one-month-ahead backtest** (Shashwat, `src/run_m5_count_analysis.py` on branch `m5-modeling`): weights fitted 2008–2015, each 2016–2024 prediction uses actual counts through the prior month.
 - **Experiment 2 — fixed-origin forecast** (`src/fixed_origin_forecast.py`): every 2016–2024 prediction uses only information available at end-2015; error reported by horizon; residual clustering on relative residuals. Run: `python src/fixed_origin_forecast.py --stage all` (or `--stage tune --model NAME` then `--stage fit` on a slow machine).
 
 ## Modelling plan (from the M4 paper outline)
