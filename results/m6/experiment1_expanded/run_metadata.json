@@ -1,0 +1,27 @@
+{
+  "experiment": "Experiment 1 expanded tuning",
+  "forecast_design": "updated-history one-month-ahead backtest; weights frozen after 2015",
+  "train": "2008-01 through 2015-12",
+  "holdout": "2016-01 through 2024-12",
+  "rows_train": 269664,
+  "rows_holdout": 303480,
+  "postcodes": 2810,
+  "excluded_0000_installations": 4,
+  "validation": "two expanding full-year folds: <=2013 -> 2014; <=2014 -> 2015",
+  "ridge_search": "GridSearchCV expanded alpha grid (11 candidates)",
+  "random_forest_search": "BayesSearchCV n_iter=16; 150 trees per fit",
+  "ridge_best_params": {
+    "model__alpha": 1000
+  },
+  "ridge_cv_mae": 2.304578185081482,
+  "rf_best_params": {
+    "max_depth": 15,
+    "max_features": 0.3,
+    "max_samples": 0.9,
+    "min_samples_leaf": 8
+  },
+  "rf_cv_mae": 2.003378544614161,
+  "heldout_predictions_clipped_nonnegative": true,
+  "seed": 42,
+  "elapsed_seconds": 167.0
+}

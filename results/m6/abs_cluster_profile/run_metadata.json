@@ -1,0 +1,22 @@
+{
+  "analysis": "post-hoc descriptive profiling of Experiment 2 residual clusters",
+  "cluster_input": "results/experiment2/postcode_residual_clusters.csv",
+  "census_features": "ABS 2021 Census static snapshot",
+  "adoption_snapshot": "2024-12 cumulative installations / 2021 occupied private dwellings",
+  "interpretation_rule": "descriptive associations only; not causal and not information available to a 2015 forecast",
+  "clustered_postcodes": 1724,
+  "matched_feature_rows": 1722,
+  "selected_features": [
+    "Median_tot_hhd_inc_weekly",
+    "Median_age_persons",
+    "Average_household_size",
+    "pop_density_per_sqkm",
+    "detached_share",
+    "apartment_share",
+    "owner_occupied_share",
+    "rented_share",
+    "Median_mortgage_repay_monthly",
+    "Median_rent_weekly",
+    "adoption_rate"
+  ]
+}
