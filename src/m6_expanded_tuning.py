@@ -75,7 +75,7 @@ OUTROOT = ROOT / "results" / "m6"
 
 
 def _load_m5_module():
-    path = ROOT / "code" / "run_m5_count_analysis.py"
+    path = ROOT / "src" / "run_m5_count_analysis.py"
     if not path.exists():
         raise FileNotFoundError(
             f"{path} is missing. Merge/copy Experiment 1 M5 files before running M6."

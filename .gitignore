@@ -3,3 +3,5 @@ __pycache__/
 mlruns/
 *.pyc
 .env
+
+.DS_Store
