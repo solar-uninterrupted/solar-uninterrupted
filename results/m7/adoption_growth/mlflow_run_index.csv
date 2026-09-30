@@ -1,0 +1,11 @@
+experiment,feature_set,model,run_id
+M6 Experiment 1,,verified summary,cc0b15c4a2094425ba0a07445f1c1679
+M6 Experiment 2,,verified summary,563322d1a4aa4a3faf0090dc9646dec6
+M7 Experiment 3,history_only,Ridge,f8c671383c414792a3ec69b5130820f7
+M7 Experiment 3,history_only,Random forest,d0e242f0e06340b0b18b35f91d2baed1
+M7 Experiment 3,history_only,XGBoost,5b8e0c420169442d8579e818ab94f787
+M7 Experiment 3,history_only,RF-XGB blend,b1c3bac1ff4240b097ff6afce7034918
+M7 Experiment 3,history_plus_census,Ridge,bb848e3468984b6da69b45b72658c842
+M7 Experiment 3,history_plus_census,Random forest,1c00cbaab0f1457ebc3392b6bc6206f1
+M7 Experiment 3,history_plus_census,XGBoost,d0585256b2e64d889d74d6b07b8cda2d
+M7 Experiment 3,history_plus_census,RF-XGB blend,3dd9083ee5a049638212e0f541ae81aa
