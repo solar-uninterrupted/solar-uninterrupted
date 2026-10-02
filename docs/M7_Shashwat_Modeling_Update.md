@@ -11,7 +11,7 @@ Module 7 adds a third supervised experiment to the two installation-count foreca
 
 The target is an annual increment rather than cumulative adoption rate. This avoids making the prediction task largely a restatement of the previous cumulative adoption level.
 
-The experiment uses a strictly chronological three-origin design:
+The experiment uses a chronological three-origin target split:
 
 - origin 2021 → target 2022: tuning-training sample
 - origin 2022 → target 2023: chronological validation sample
@@ -53,7 +53,9 @@ The second specification adds the fixed ABS 2021 Census snapshot:
 - owner-occupied and rented shares
 - state
 
-The Census-enhanced specification is best interpreted as **retrospective structural-context augmentation**. The 2021 Census variables are never inserted into the genuine end-2015 fixed-origin Experiment 2 forecast.
+The Census features describe the population and housing structure measured at the 2021 Census, whose reference date predates all three Experiment 3 target years. Most 2021 Census topics were publicly released on **28 June 2022**. Accordingly, the 2021→2022 development row is retrospective with respect to publication availability, while the 2022→2023 validation and 2023→2024 holdout are genuine out-of-time forecasts with Census data available by the forecasting origin. The 2021 Census variables are never inserted into the genuine end-2015 fixed-origin Experiment 2 forecast.
+
+Source: Australian Bureau of Statistics, [2021 Census product release guide](https://www.abs.gov.au/census/guide-census-data/2021-census-product-release-guide).
 
 The supervised models are:
 
@@ -218,7 +220,7 @@ The existing Experiment 2 forecast-horizon and residual-cluster figures should r
 
 - Adoption rate uses a static 2021 occupied-private-dwelling denominator across multiple years.
 - The CER installation data do not perfectly separate household systems, commercial systems, replacements, or every registration-timing effect.
-- The Census-enhanced Experiment 3 is a post-2021 structural-context analysis and should not be conflated with the genuine end-2015 fixed-origin forecast.
+- The 2021 Census snapshot predates all Experiment 3 target years, but public release occurred on 28 June 2022; the 2021→2022 development row is therefore retrospective with respect to publication availability, while the later validation and holdout are out-of-time.
 - The primary-sample MAE gain is modest and does not dominate every metric.
 - Socioeconomic and housing characteristics associated with residual clusters are descriptive, not causal.
 

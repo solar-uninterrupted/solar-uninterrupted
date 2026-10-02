@@ -44,7 +44,7 @@ A ≥100-dwelling sensitivity analysis is also reported.
 - `history_only`
 - `history_plus_census`
 
-The Census branch is retrospective structural-context augmentation and does not alter the end-2015 Experiment 2 forecast.
+The Census reference date predates all Experiment 3 target years. Because most 2021 Census topics were publicly released on 28 June 2022, the 2021→2022 development row is retrospective with respect to publication availability, while the 2022→2023 validation and 2023→2024 holdout are out-of-time forecasts with Census data available by the forecasting origin. The Census branch does not alter the end-2015 Experiment 2 forecast.
 
 ## Reproduce
 
@@ -100,4 +100,4 @@ The two-year-mean baseline records MAE 0.01034.
 
 ## Interpretation boundary
 
-The 2021 Census variables provide structural context for this post-2021 experiment. They are not treated as information available to the end-2015 Experiment 2 forecast, and observed Census/residual associations are not interpreted causally.
+The 2021 Census variables provide structural context for Experiment 3. Their reference date predates all three target years, but public release occurred during 2022, so only the later validation and holdout are described as out-of-time with respect to Census availability. The Census variables are not treated as information available to the end-2015 Experiment 2 forecast, and observed Census/residual associations are not interpreted causally.

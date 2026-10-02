@@ -62,6 +62,24 @@ assert meta["validation_origin"] == 2022
 assert meta["test_origin"] == 2023
 assert meta["holdout_target_year"] == 2024
 
+assert float(meta["elapsed_seconds"]) > 0
+
+versions = meta["library_versions"]
+for package in [
+    "python",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "xgboost",
+    "mlflow",
+    "matplotlib",
+]:
+    assert versions.get(package), f"missing version for {package}"
+
+assert "28 June 2022" in meta["census_boundary"]
+assert "2022 -> 2023 validation" in meta["census_boundary"]
+assert "2023 -> 2024 holdout" in meta["census_boundary"]
+
 assert len(pred) > 2400
 assert pred[POSTCODE].is_unique
 assert pred["origin"].eq(2023).all()
@@ -187,6 +205,11 @@ print(
 print(
     "PASS Census-context ablation and "
     ">=100-dwelling sensitivity analysis"
+)
+
+print(
+    "PASS elapsed runtime, library versions, "
+    "and Census publication boundary"
 )
 
 print(
