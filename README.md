@@ -119,7 +119,7 @@ python src/verify_m7_outputs.py
 - **Tuning:** GridSearchCV and BayesSearchCV under time-ordered folds or chronological validation.
 - **Unsupervised analysis:** PCA + K-Means on out-of-sample relative residual profiles.
 - **Metrics:** MAE, RMSE, R², median absolute error where applicable, and naive persistence/rolling-mean baselines.
-- **Leakage rule:** installation-history features use only information available by the prediction origin. The 2021 Census snapshot is never used in the end-2015 Experiment 2 forecast. In Experiment 3, the Census branch is retrospective structural-context augmentation rather than a claim that every Census field was operationally available at the 2021 forecast origin.
+- **Leakage / availability rule:** installation-history features use only information available by the prediction origin. The 2021 Census snapshot is never used in the end-2015 Experiment 2 forecast. Its reference date predates all Experiment 3 target years, but most 2021 Census topics were released on 28 June 2022; therefore the 2021→2022 development row is retrospective with respect to publication availability, while the 2022→2023 validation and 2023→2024 holdout are out-of-time with Census data available by the forecasting origin.
 - **Sensitivity analysis:** Experiment 3 uses a ≥50-dwelling primary sample and repeats evaluation at ≥100 dwellings.
 
 ## Experiment tracking

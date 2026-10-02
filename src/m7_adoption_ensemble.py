@@ -36,8 +36,13 @@ Feature sets
 1. history_only
 2. history_plus_census
 
-The Census variables are a fixed 2021 snapshot. They are only used in this
-post-2021 experiment. They are not inserted into the 2015-origin Experiment 2.
+The Census variables are a fixed 2021 snapshot whose reference date predates
+all Experiment 3 target years. Most 2021 Census topics were publicly released
+on 28 June 2022. Therefore, the 2021 -> 2022 development row is retrospective
+with respect to publication availability, while the 2022 -> 2023 validation
+and 2023 -> 2024 holdout are out-of-time forecasts with Census data available
+by the forecasting origin. Census variables are never inserted into the
+2015-origin Experiment 2.
 
 Primary sample
 --------------
@@ -70,14 +75,16 @@ The script logs:
 - verified M6 Experiment 2 summary
 - M7 Experiment 3 model selections and holdout results
 
-The local mlruns/ directory is gitignored. A compact run index is saved under
-results/m7/adoption_growth/mlflow_run_index.csv.
+The local mlflow.db SQLite database is gitignored. A compact run index is
+saved under results/m7/adoption_growth/mlflow_run_index.csv.
 """
 from __future__ import annotations
 
 import json
 import shutil
 import sys
+import time
+from importlib.metadata import version as package_version
 from pathlib import Path
 
 import mlflow
@@ -911,15 +918,38 @@ def make_figures(
         + plot["model"]
     )
 
+    values = plot["MAE_pct_points"].to_numpy(dtype=float)
+    y = np.arange(len(plot))
+
     fig, ax = plt.subplots(figsize=(11, 6))
-    ax.barh(labels, plot["MAE_pct_points"])
+    ax.scatter(values, y, s=55)
+    ax.set_yticks(y, labels)
+    ax.invert_yaxis()
+
+    for yi, value in zip(y, values):
+        ax.annotate(
+            f"{value:.3f}",
+            (value, yi),
+            xytext=(6, 0),
+            textcoords="offset points",
+            va="center",
+            fontsize=8,
+        )
+
+    xmin = min(1.0, float(values.min() - 0.02))
+    xmax = max(1.21, float(values.max() + 0.02))
+    ax.set_xlim(xmin, xmax)
+
     ax.set_xlabel(
-        "2024 holdout MAE (percentage points of annual adoption growth)"
+        "2024 holdout MAE "
+        "(percentage points of annual adoption growth)"
     )
     ax.set_title(
-        "Experiment 3 — one-year-ahead adoption-growth forecast"
+        "Experiment 3 — 2024 holdout MAE "
+        "(zoomed scale; lower is better)"
     )
     ax.grid(axis="x", alpha=0.25)
+
     fig.tight_layout()
     fig.savefig(
         OUT / "fig_m7_holdout_mae_comparison.png",
@@ -1004,10 +1034,18 @@ def make_figures(
 
 
 def main():
-    if OUT.exists():
-        shutil.rmtree(OUT)
+    run_started = time.monotonic()
 
     OUT.mkdir(parents=True, exist_ok=True)
+
+    # Preserve the committed human-readable results README across reruns.
+    for existing in OUT.iterdir():
+        if existing.name == "README.md":
+            continue
+        if existing.is_dir():
+            shutil.rmtree(existing)
+        else:
+            existing.unlink()
 
     search_dir = OUT / "search"
     search_dir.mkdir(exist_ok=True)
@@ -1326,10 +1364,16 @@ def main():
             "in increments of 0.1."
         ),
         "census_boundary": (
-            "2021 Census variables are used only "
-            "in this post-2021 Experiment 3 and "
-            "remain excluded from the 2015-origin "
-            "Experiment 2 forecast."
+            "The 2021 Census reference date predates all "
+            "Experiment 3 target years. Most 2021 Census "
+            "topics were publicly released on 28 June 2022. "
+            "The 2021 -> 2022 development row is therefore "
+            "retrospective with respect to publication "
+            "availability, while the 2022 -> 2023 validation "
+            "and 2023 -> 2024 holdout are out-of-time forecasts "
+            "with Census data available by the forecasting "
+            "origin. Census variables remain excluded from the "
+            "2015-origin Experiment 2 forecast."
         ),
         "denominator_caution": (
             "Adoption-rate denominator is static "
@@ -1350,6 +1394,19 @@ def main():
         "best_naive_baseline": {
             "model": str(baseline_best["model"]),
             "MAE": float(baseline_best["MAE"]),
+        },
+        "elapsed_seconds": round(
+            time.monotonic() - run_started,
+            1,
+        ),
+        "library_versions": {
+            "python": sys.version.split()[0],
+            "numpy": package_version("numpy"),
+            "pandas": package_version("pandas"),
+            "scikit-learn": package_version("scikit-learn"),
+            "xgboost": package_version("xgboost"),
+            "mlflow": package_version("mlflow"),
+            "matplotlib": package_version("matplotlib"),
         },
         "mlflow_tracking_uri": (
             "local gitignored SQLite database mlflow.db"

@@ -76,7 +76,7 @@
   ],
   "selection_rule": "Hyperparameters selected using origin 2021 -> target 2022 training and origin 2022 -> target 2023 chronological validation. Final models refit on both development origins and evaluated once on origin 2023 -> target 2024.",
   "blend_rule": "RF/XGBoost weight selected on 2023 validation target only; candidate RF weights 0.0 to 1.0 in increments of 0.1.",
-  "census_boundary": "2021 Census variables are used only in this post-2021 Experiment 3 and remain excluded from the 2015-origin Experiment 2 forecast.",
+  "census_boundary": "The 2021 Census reference date predates all Experiment 3 target years. Most 2021 Census topics were publicly released on 28 June 2022. The 2021 -> 2022 development row is therefore retrospective with respect to publication availability, while the 2022 -> 2023 validation and 2023 -> 2024 holdout are out-of-time forecasts with Census data available by the forecasting origin. Census variables remain excluded from the 2015-origin Experiment 2 forecast.",
   "denominator_caution": "Adoption-rate denominator is static 2021 occupied private dwellings. Primary sample excludes small-population areas and denominators below 50; a >=100-dwelling sensitivity is reported.",
   "best_learned_or_ensemble": {
     "feature_set": "history_plus_census",
@@ -88,6 +88,16 @@
   "best_naive_baseline": {
     "model": "Mean previous 2 years",
     "MAE": 0.01148118416921126
+  },
+  "elapsed_seconds": 30.0,
+  "library_versions": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.2.0",
+    "mlflow": "3.16.1",
+    "matplotlib": "3.11.2"
   },
   "mlflow_tracking_uri": "local gitignored SQLite database mlflow.db",
   "seed": 42
