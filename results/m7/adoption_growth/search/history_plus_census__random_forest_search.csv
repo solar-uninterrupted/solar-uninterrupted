@@ -1,0 +1,19 @@
+params,mean_test_score,std_test_score,rank_test_score,mean_fit_time
+"{'model__max_depth': 4, 'model__max_features': 0.5, 'model__min_samples_leaf': 5}",-0.011245428309685637,0.0,17,0.28851914405822754
+"{'model__max_depth': 4, 'model__max_features': 0.5, 'model__min_samples_leaf': 20}",-0.010751975267804668,0.0,14,0.2957291603088379
+"{'model__max_depth': 4, 'model__max_features': 0.5, 'model__min_samples_leaf': 50}",-0.010627902232098233,0.0,11,0.2845418453216553
+"{'model__max_depth': 4, 'model__max_features': 1.0, 'model__min_samples_leaf': 5}",-0.011489557431564981,0.0,18,0.4656100273132324
+"{'model__max_depth': 4, 'model__max_features': 1.0, 'model__min_samples_leaf': 20}",-0.010882628934956978,0.0,16,0.4408571720123291
+"{'model__max_depth': 4, 'model__max_features': 1.0, 'model__min_samples_leaf': 50}",-0.010734862245070139,0.0,12,0.4253978729248047
+"{'model__max_depth': 8, 'model__max_features': 0.5, 'model__min_samples_leaf': 5}",-0.010743424263740507,0.0,13,0.42392706871032715
+"{'model__max_depth': 8, 'model__max_features': 0.5, 'model__min_samples_leaf': 20}",-0.010382250620077138,0.0,3,0.39929986000061035
+"{'model__max_depth': 8, 'model__max_features': 0.5, 'model__min_samples_leaf': 50}",-0.010451339098128377,0.0,6,0.3009309768676758
+"{'model__max_depth': 8, 'model__max_features': 1.0, 'model__min_samples_leaf': 5}",-0.01085328690355999,0.0,15,0.6807098388671875
+"{'model__max_depth': 8, 'model__max_features': 1.0, 'model__min_samples_leaf': 20}",-0.010391137869780158,0.0,4,0.6554889678955078
+"{'model__max_depth': 8, 'model__max_features': 1.0, 'model__min_samples_leaf': 50}",-0.010479768568947516,0.0,8,0.5048940181732178
+"{'model__max_depth': None, 'model__max_features': 0.5, 'model__min_samples_leaf': 5}",-0.01052754590705123,0.0,9,0.5198149681091309
+"{'model__max_depth': None, 'model__max_features': 0.5, 'model__min_samples_leaf': 20}",-0.010328382811196673,0.0,2,0.39453601837158203
+"{'model__max_depth': None, 'model__max_features': 0.5, 'model__min_samples_leaf': 50}",-0.010447870492193825,0.0,5,0.322526216506958
+"{'model__max_depth': None, 'model__max_features': 1.0, 'model__min_samples_leaf': 5}",-0.010615121817913319,0.0,10,1.0080890655517578
+"{'model__max_depth': None, 'model__max_features': 1.0, 'model__min_samples_leaf': 20}",-0.010325102616702473,0.0,1,0.7073531150817871
+"{'model__max_depth': None, 'model__max_features': 1.0, 'model__min_samples_leaf': 50}",-0.010479482545415562,0.0,7,0.49596595764160156

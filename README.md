@@ -100,21 +100,42 @@ These are documented in the M2 planning summary and implemented or flagged as no
 
 ## Experiments
 
-- **Experiment 1 — one-month-ahead backtest** (Shashwat, `src/run_m5_count_analysis.py` on branch `m5-modeling`): weights fitted 2008–2015, each 2016–2024 prediction uses actual counts through the prior month.
-- **Experiment 2 — fixed-origin forecast** (`src/fixed_origin_forecast.py`): every 2016–2024 prediction uses only information available at end-2015; error reported by horizon; residual clustering on relative residuals. Run: `python src/fixed_origin_forecast.py --stage all` (or `--stage tune --model NAME` then `--stage fit` on a slow machine).
+- **Experiment 1 — one-month-ahead installation counts** (`src/run_m5_count_analysis.py`): model weights fit on 2008–2015; each 2016–2024 monthly prediction may use observed history through the prior month.
+- **Experiment 2 — fixed-origin installation counts** (`src/fixed_origin_forecast.py`, expanded in `src/m6_expanded_tuning.py`): every 2016–2024 prediction uses information available at end-2015; performance is reported by forecast horizon and residual profiles are clustered with PCA + K-Means.
+- **Experiment 3 — one-year-ahead adoption growth** (`src/m7_adoption_ensemble.py`): predicts annual installations divided by 2021 occupied private dwellings. History-only and history-plus-Census feature sets are compared using Ridge, Random Forest, XGBoost, a validation-selected RF/XGB blend, and naive baselines. Origin 2023 → target 2024 is the untouched final holdout.
 
-## Modelling plan (from the M4 paper outline)
+Reproduce and verify Experiment 3:
 
-- **Target:** postcode-level installation activity; adoption *rate* requires the ABS dwelling
-  denominator (see `docs/ABS-data-instructions.md`), so the M5 first pass models installation
-  counts and says so explicitly.
-- **Split:** chronological. Train 2001–2015, evaluate 2016–2026 with metrics reported by
-  prediction year. Tuning uses expanding-window folds inside 2001–2015 only.
-- **Supervised:** ridge regression and random forest (primary); decision tree and XGBoost (additional).
-- **Tuning:** GridSearchCV / RandomizedSearchCV; BayesSearchCV (scikit-optimize) for the tree ensembles.
-- **Unsupervised:** PCA + K-Means on each postcode's out-of-sample residual series; hierarchical clustering as a check.
-- **Metrics:** MAE, RMSE, R², plus a persistence baseline (last year's value) that every model must beat.
-- **Leakage rule:** any installation-history feature attached to a row dated *t* uses only data before *t*.
+~~~bash
+python src/m7_adoption_ensemble.py
+python src/verify_m7_outputs.py
+~~~
+
+## Implemented modelling
+
+- **Targets:** Experiments 1–2 model installation counts; Experiment 3 models annual adoption-rate increment.
+- **Temporal evaluation:** all experiments preserve chronological order. Experiment 2 is a genuine end-2015 fixed-origin test; Experiment 3 uses 2021→2022 development, 2022→2023 validation, and 2023→2024 holdout.
+- **Supervised models:** Ridge, Decision Tree, Random Forest, XGBoost, plus a validation-selected RF/XGBoost blend in Experiment 3.
+- **Tuning:** GridSearchCV and BayesSearchCV under time-ordered folds or chronological validation.
+- **Unsupervised analysis:** PCA + K-Means on out-of-sample relative residual profiles.
+- **Metrics:** MAE, RMSE, R², median absolute error where applicable, and naive persistence/rolling-mean baselines.
+- **Leakage rule:** installation-history features use only information available by the prediction origin. The 2021 Census snapshot is never used in the end-2015 Experiment 2 forecast. In Experiment 3, the Census branch is retrospective structural-context augmentation rather than a claim that every Census field was operationally available at the 2021 forecast origin.
+- **Sensitivity analysis:** Experiment 3 uses a ≥50-dwelling primary sample and repeats evaluation at ≥100 dwellings.
+
+## Experiment tracking
+
+Module 7 uses **MLflow 3 with a local SQLite backend**.
+
+Experiment 3 model runs are tracked directly. Verified summaries of the completed M6 Experiments 1 and 2 are registered retrospectively for cross-experiment comparison; the original M6 model-training executions were not run under MLflow.
+
+The local `mlflow.db` is gitignored. Committed run IDs are stored in `results/m7/adoption_growth/mlflow_run_index.csv`.
+
+To regenerate the M7 experiment and inspect MLflow:
+
+~~~bash
+python src/m7_adoption_ensemble.py
+mlflow ui --backend-store-uri sqlite:///mlflow.db
+~~~
 
 ## Environment
 
